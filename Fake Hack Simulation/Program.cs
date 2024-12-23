@@ -23,15 +23,18 @@ class Program
             "Connecting to dark web...",
             "Decrypting SSL channels..."
         };
+        
+        Random rnd = new Random();
+        int speed = rnd.Next(1, 60);
 
         foreach (var message in startupMessages)
         {
             Random rand = new Random();
 
             Console.WriteLine(message);
-            Thread.Sleep(1500 - rand.Next(0,1400));  // Simulate delay
+            Thread.Sleep(1500 - rand.Next(0,1400) / speed);  // Simulate delay
         }
-        Console.WriteLine("\nConnection established...\n");
+        Console.WriteLine("\nConnection established...");
     }
 
     static void SimulateHackingProcess()
@@ -39,7 +42,7 @@ class Program
         for (int i = 0; i < 15; i++)
         {
             Random rand = new Random();
-            string ip = $"192.{rand.Next(0, 255)}.{rand.Next(0, 255)}.{rand.Next(1, 255)}";
+            string ip = $"192.168.{rand.Next(0, 255)}.{rand.Next(1, 255)}";
             Console.WriteLine($"Accessing node at {ip}... Success");
             SimulateLoadingBar();
         }
@@ -56,7 +59,7 @@ class Program
             Random rnd = new Random();
             
             Console.Write("#");
-            Thread.Sleep((500 - rnd.Next(0,490)) / speed);  // Simulate loading speed
+            Thread.Sleep(((500 - (i /30*499)) / speed));  // Simulate loading speed
         }
         Console.WriteLine("] 100%");
     }
@@ -70,7 +73,10 @@ class Program
         Thread.Sleep(2000);
         Console.WriteLine("You've been hacked... BY YOURSELF!");
         Thread.Sleep(2000);
-        Console.WriteLine("JK xD");
         Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("JK this is all fake.");
+        Thread.Sleep(400);
+        Console.WriteLine("pls don't sue me...");
+        Thread.Sleep(400);
     }
 }
