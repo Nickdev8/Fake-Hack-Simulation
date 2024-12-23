@@ -3,4 +3,4 @@
 This is a simple script to mess with my friends to tell them im hacking them XD
 just for fun
 
-![image](/img/scnst)
+![image](/img/scnst.png)
