@@ -9,6 +9,10 @@ just for fun
 2. open the solution in /fake hacking sim/*.sln
 3. just run and view the terminal 
 
+## What i used
+i made some text delayed by some random timing
+and I logged some fake ip's starting with 192.168.x.x
 
 
+# Terminal output 
 ![img only shows in GitHub](/img/scnst.png)
