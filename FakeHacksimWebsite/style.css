@@ -1,17 +1,76 @@
-
 body {
     background-color: black;
-    color: green;
+    color: rgb(0, 229, 0);
     font-family: 'Courier New', Courier, monospace;
     font-size: 18px;
     margin: 0;
     padding: 20px;
 }
+
 #terminal {
     white-space: pre-line;
     height: 90vh;
     overflow-y: scroll;
 }
+
 .warning {
-    color: red;
+    color: rgb(255, 69, 69);
+    animation: flicker 0.5s infinite alternate;
+}
+
+@keyframes flicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.glitch {
+    position: relative;
+    color: rgb(0, 229, 0);
+    animation: glitch 1s infinite;
+}
+
+.glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    color: rgb(0, 229, 0);
+    background: black;
+    overflow: hidden;
+    clip: rect(0, 900px, 0, 0);
+}
+
+.glitch::before {
+    animation: glitchTop 1s infinite;
+}
+
+.glitch::after {
+    animation: glitchBottom 1s infinite;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+@keyframes glitchTop {
+    0% { clip: rect(0, 900px, 0, 0); transform: translate(2px, -2px); }
+    20% { clip: rect(10px, 900px, 30px, 0); transform: translate(-2px, 2px); }
+    40% { clip: rect(20px, 900px, 50px, 0); transform: translate(2px, -2px); }
+    60% { clip: rect(30px, 900px, 70px, 0); transform: translate(-2px, 2px); }
+    80% { clip: rect(40px, 900px, 90px, 0); transform: translate(2px, -2px); }
+    100% { clip: rect(50px, 900px, 110px, 0); transform: translate(0); }
+}
+
+@keyframes glitchBottom {
+    0% { clip: rect(50px, 900px, 110px, 0); transform: translate(-2px, 2px); }
+    20% { clip: rect(40px, 900px, 90px, 0); transform: translate(2px, -2px); }
+    40% { clip: rect(30px, 900px, 70px, 0); transform: translate(-2px, 2px); }
+    60% { clip: rect(20px, 900px, 50px, 0); transform: translate(2px, -2px); }
+    80% { clip: rect(10px, 900px, 30px, 0); transform: translate(-2px, 2px); }
+    100% { clip: rect(0, 900px, 0, 0); transform: translate(0); }
 }

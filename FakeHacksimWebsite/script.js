@@ -1,10 +1,11 @@
 
 const terminal = document.getElementById("terminal");
 
-function writeMessage(message, delay = 1500) {
+async function writeMessage(message, delay = 1000) {
     return new Promise(resolve => {
         setTimeout(() => {
-            terminal.innerHTML += message + '\n';
+            const glitchMessage = `<span class="glitch" data-text="${message}">${message}</span>`;
+            terminal.innerHTML += glitchMessage + '\n';
             terminal.scrollTop = terminal.scrollHeight;
             resolve();
         }, delay);
@@ -54,10 +55,10 @@ async function simulateLoadingBar() {
 async function showFunnyEnding() {
     await writeMessage("\nAccess granted to the mainframe!");
     await new Promise(r => setTimeout(r, 2000));
-    terminal.innerHTML += '<span class="warning">WARNING! Virus detected...</span>\n';
+    terminal.innerHTML += '<span class="warning">\n \n##  WARNING! Virus detected... \n##  You\'ve been hacked...</span>';
     terminal.scrollTop = terminal.scrollHeight;
     await new Promise(r => setTimeout(r, 2000));
-    terminal.innerHTML += '<span class="warning">You\'ve been hacked... BY YOURSELF!</span>\n';
+    terminal.innerHTML += '<span class="warning"> BY YOURSELF!\n \n</span>';
     terminal.scrollTop = terminal.scrollHeight;
     await new Promise(r => setTimeout(r, 2000));
     await writeMessage("JK this is all fake.");
