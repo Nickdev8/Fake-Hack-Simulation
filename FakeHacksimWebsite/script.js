@@ -47,7 +47,7 @@ async function simulateLoadingBar() {
         terminal.scrollTop = terminal.scrollHeight;
         await new Promise(r => setTimeout(r, Math.random() * 50));
     }
-    await writeMessage("\n", 0);  // New line after bar completes
+    await writeMessage("", 0);  // New line after bar completes
 }
 
 
