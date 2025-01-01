@@ -1,0 +1,17 @@
+
+body {
+    background-color: black;
+    color: green;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+    margin: 0;
+    padding: 20px;
+}
+#terminal {
+    white-space: pre-line;
+    height: 90vh;
+    overflow-y: scroll;
+}
+.warning {
+    color: red;
+}

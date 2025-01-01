@@ -4,101 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hack Simulator 2024</title>
-    <style>
-        body {
-            background-color: black;
-            color: green;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 18px;
-            margin: 0;
-            padding: 20px;
-        }
-        #terminal {
-            white-space: pre-line;
-            height: 90vh;
-            overflow-y: scroll;
-        }
-        .warning {
-            color: red;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        href="hacker.png"
+        rel="icon"
+        media="(prefers-color-scheme: light)"
+        sizes="any" 
+        type="image/svg+xml"
+    />
+    <link
+        href="hacker (1).png"
+        rel="icon"
+        media="(prefers-color-scheme: dark)"
+        sizes="any" 
+        type="image/svg+xml"
+    />
+
 </head>
 <body>
     <div id="terminal"></div>
-
-    <script>
-        const terminal = document.getElementById("terminal");
-
-        function writeMessage(message, delay = 1500) {
-            return new Promise(resolve => {
-                setTimeout(() => {
-                    terminal.innerHTML += message + '\n';
-                    terminal.scrollTop = terminal.scrollHeight;
-                    resolve();
-                }, delay);
-            });
-        }
-
-        async function simulateStartup() {
-            const startupMessages = [
-                "Initializing secure connection...",
-                "Bypassing firewall...",
-                "Spoofing MAC address...",
-                "Connecting to dark web...",
-                "Decrypting SSL channels..."
-            ];
-
-            for (const msg of startupMessages) {
-                await writeMessage(msg, Math.random() * 1500);
-            }
-            await writeMessage("\nConnection established...\n");
-        }
-
-        async function simulateHackingProcess() {
-            for (let i = 0; i < 5; i++) {
-                const ip = `192.168.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`;
-                await writeMessage(`Accessing node at ${ip}... Success`, 0);
-                await simulateLoadingBar();
-            }
-        }
-
-        async function simulateLoadingBar() {
-            const loadLength = 30;
-            let bar = "[";
-            const barElement = document.createElement("div");
-            barElement.textContent = bar + " ".repeat(loadLength) + "]";
-            terminal.appendChild(barElement);  // Append new bar below previous text
-
-            for (let i = 0; i < loadLength; i++) {
-                bar += "#";
-                barElement.textContent = bar + " ".repeat(loadLength - i - 1) + "] 100%";
-                terminal.scrollTop = terminal.scrollHeight;
-                await new Promise(r => setTimeout(r, Math.random() * 50));
-            }
-            await writeMessage("\n", 0);  // New line after bar completes
-        }
-
-
-        async function showFunnyEnding() {
-            await writeMessage("\nAccess granted to the mainframe!");
-            await new Promise(r => setTimeout(r, 2000));
-            terminal.innerHTML += '<span class="warning">WARNING! Virus detected...</span>\n';
-            terminal.scrollTop = terminal.scrollHeight;
-            await new Promise(r => setTimeout(r, 2000));
-            terminal.innerHTML += '<span class="warning">You\'ve been hacked... BY YOURSELF!</span>\n';
-            terminal.scrollTop = terminal.scrollHeight;
-            await new Promise(r => setTimeout(r, 2000));
-            await writeMessage("JK this is all fake.");
-            await writeMessage("pls don't sue me...");
-        }
-
-        async function startSimulation() {
-            await simulateStartup();
-            await simulateHackingProcess();
-            await showFunnyEnding();
-        }
-
-        startSimulation();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
