@@ -29,7 +29,7 @@ async function simulateStartup() {
 async function simulateHackingProcess() {
     for (let i = 0; i < 5; i++) {
         const ip = `192.168.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`;
-        await writeMessage(`Accessing node at ${ip}... Success`, 0);
+        await writeMessage(`Accessing node at ${ip}...`, 0);
         await simulateLoadingBar();
     }
 }
@@ -47,7 +47,7 @@ async function simulateLoadingBar() {
         terminal.scrollTop = terminal.scrollHeight;
         await new Promise(r => setTimeout(r, Math.random() * 50));
     }
-    await writeMessage("", 0);  // New line after bar completes
+    await writeMessage("Success\n", 0);  // New line after bar completes
 }
 
 
